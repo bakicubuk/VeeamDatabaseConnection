@@ -2,6 +2,6 @@ MSSQLPowerShell.ps1 isimli PowerShell komut dosyası Veeam Backup & Replication 
 
 MSSQLPowerShell.ps1 isimli komut dosyası sadece belirli kayıt defteri değerlerinden bilgi çeker ve bu değerleri PowerShell konsolunda görüntüler. Sistemde hiçbir değişiklik yapılmayacaktır.
 
-Enterprise Manager'ın kurulu olduğu sunucuda aşağıdaki PowerShell komut dosyasını çalıştırın; veritabanı bağlantı bilgilerinin çıktısını alacaktır.
+Enterprise Manager'ın kurulu olduğu sunucuda EnterpriseManagerDatabase.ps1 isimli PowerShell komut dosyasını çalıştırdığınızda; veritabanı bağlantı bilgilerinin çıktısını alırsınız.
 
-Aşağıdaki komut dosyası sadece belirli kayıt defteri değerlerinden bilgi çeker ve bu değerleri PowerShell konsolunda görüntüler. Sistemde hiçbir değişiklik yapılmayacaktır.
+EnterpriseManagerDatabase.ps1 komut dosyası sadece belirli kayıt defteri değerlerinden bilgi çeker ve bu değerleri PowerShell konsolunda görüntüler. Sistemde hiçbir değişiklik yapılmayacaktır.
