@@ -1,0 +1,18 @@
+$activeConfig = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Veeam\Veeam Backup Reporting\DatabaseConfigurations' -Name 'SqlActiveConfiguration').SqlActiveConfiguration
+if ($activeConfig -eq "MsSql") {
+    $sqlServerName = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Veeam\Veeam Backup Reporting\DatabaseConfigurations\MsSql' -Name 'SqlServerName').SqlServerName
+    $sqlInstanceName = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Veeam\Veeam Backup Reporting\DatabaseConfigurations\MsSql' -Name 'SqlInstanceName').SqlInstanceName
+    $sqlDatabaseName = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Veeam\Veeam Backup Reporting\DatabaseConfigurations\MsSql' -Name 'SqlDatabaseName').SqlDatabaseName
+    Write-Host " Database Engine: $($activeConfig) "
+    Write-Output "Connection Settings: $($sqlServerName)\$($sqlInstanceName)"
+    Write-Output "Database Name: $($sqlDatabaseName)"
+    } elseif ($activeConfig -eq "PostgreSql") {
+    $pgServerName = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Veeam\Veeam Backup Reporting\DatabaseConfigurations\PostgreSql' -Name 'SqlHostName').SqlHostName
+    $pgPortNumber = (Get-ItemPropertyValue -Path 'HKLM:\SOFTWARE\Veeam\Veeam Backup Reporting\DatabaseConfigurations\PostgreSql' -Name 'SqlHostPort')
+    $pgDatabaseName = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Veeam\Veeam Backup Reporting\DatabaseConfigurations\PostgreSql' -Name 'SqlDatabaseName').SqlDatabaseName
+    $pgUser = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Veeam\Veeam Backup Reporting\DatabaseConfigurations\PostgreSql' -Name 'PostgresUserForWindowsAuth').PostgresUserForWindowsAuth
+    Write-Host "Database Engine: $($activeConfig)"
+    Write-Output "Connection Settings: $($pgServerName):$($pgPortNumber)"
+    Write-Output "Database Name: $($pgDatabaseName)"
+    Write-Output "PostgreSQL User: $($pgUser)"
+}
